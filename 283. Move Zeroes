@@ -1,0 +1,20 @@
+class Solution(object):
+    def moveZeroes(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: None Do not return anything, modify nums in-place instead.
+        """
+        #two pointers
+        # zeroIndex, currIndex and swap each time you see a currIndex with zero index when currIndex is not zero
+        zeroIndex = 0
+        currIndex = 0
+        for i,n in enumerate(nums):
+            if nums[zeroIndex] != 0 and n == 0:
+                zeroIndex = i
+            elif n != 0:
+                nums[zeroIndex], nums[i] = nums[i], nums[zeroIndex]
+                zeroIndex += 1          
+
+
+        
+        
