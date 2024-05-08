@@ -1,0 +1,8 @@
+class Solution(object):
+    def isPowerOfTwo(self, n):
+# CodeO(N) T.C.
+        return n > 0 and bin(n)[2:].count('1') == 1
+    
+# O(1) T.C.
+        return n > 0 and not int(bin(n)[3:] or '0')
+        
