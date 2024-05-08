@@ -1,0 +1,15 @@
+class Solution(object):
+    def missingNumber(self, nums):
+        sort_num = list(sorted(nums))
+        count = 0
+
+        for i in range(0,max(nums)):
+            if sort_num[count]!= i:
+                return i
+            else:
+                count+=1 
+        return sort_num[len(nums)-1] + 1
+
+
+
+        
