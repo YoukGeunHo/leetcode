@@ -1,0 +1,18 @@
+"""
+# Definition for a Node.
+class Node(object):
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+"""
+
+class Solution(object):
+    def postorder(self, root):
+        if root==None:
+            return []
+        ans = []
+        for i in root.children:
+            ans = ans + self.postorder(i)
+        ans = ans + [root.val]
+        return ans
+        
