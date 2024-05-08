@@ -1,0 +1,15 @@
+class Solution(object):
+    def convertToBase7(self, num):
+        rem=''
+        if num == 0: return "0"
+        elif num <0:
+            sign='-'
+            num=-1*num
+        else:
+            sign=''
+        while num > 0:
+            rem=str(num%7)+rem
+            num=num//7
+        return sign + rem
+        
+        
