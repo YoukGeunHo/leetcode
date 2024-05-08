@@ -1,0 +1,15 @@
+class Solution(object):
+    def nextGreaterElement(self, nums1, nums2):
+        ans = []
+        for i in range(len(nums1)):
+            max_num = -1
+            for j in range(len(nums2)):
+                index = j
+                if nums1[i] == nums2[j]: # Found element in nums2 that matches current element in nums1
+                    while index != len(nums2): # Iterate through remaining elements in nums2 to find next greater element
+                        if nums2[index] > nums1[i]:
+                            max_num = nums2[index] # Update max if we find a greater element
+                            break
+                        index += 1
+            ans.append(max_num)
+        return ans
