@@ -1,0 +1,13 @@
+class Solution(object):
+    def intersection(self, nums1, nums2):
+        # Convert the lists to sets
+        set1 = set(nums1)
+        set2 = set(nums2)
+        
+        # Find the intersection of the sets
+        intersection_set = set1.intersection(set2)
+        
+        # Convert the intersection set back to a list
+        intersection_list = list(intersection_set)
+        
+        return intersection_list
