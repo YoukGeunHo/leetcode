@@ -1,0 +1,11 @@
+class Solution(object):
+    def findLUSlength(self, p, q):
+        """
+        :type a: str
+        :type b: str
+        :rtype: int
+        """
+        if p==q:
+            return -1
+        return max(len(p),len(q))
+        
