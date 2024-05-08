@@ -1,0 +1,29 @@
+
+class Solution(object):
+    def addStrings(self, num1, num2):
+        res = ""
+        #we can assume strings are same length by padding the shorter one with zeros.  
+        if len(num1) > len(num2):
+            pad = len(num1) - len(num2)
+            num2 = "0"*pad + num2
+        else:
+            pad = len(num2) - len(num1)
+            num1 = "0"*pad + num1
+        carry = 0
+        #iterating through each string from reverse order
+        for n1,n2 in zip(num1[::-1],num2[::-1]):
+            add = ord(n1) - ord('0') + ord(n2) - ord('0') + carry
+            #case 1: if the sum is greater than 9, we need to store it as a carry value for the next iteration
+            if add > 9:
+                #if the carry == 0, we increment it here
+                if not carry:
+                    carry += 1 
+                #we take the rightmost value of our addition string and append to the front of result
+                res = str(add)[-1] + res
+            #case 2: the sum is less than 10, so we append the value to our result
+            else:
+                res = str(add) + res
+                #need to reset the carry, because carry must be 0 or 1
+                carry = 0
+        # finally return the result, but if carry is still 1, we append to the front of the string
+        return res if not carry else str(carry) + res
