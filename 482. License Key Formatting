@@ -1,0 +1,25 @@
+class Solution(object):
+    def licenseKeyFormatting(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: str
+        """
+        
+        #upper case, remove all dashes and reverse 
+        no_dash = s.upper().replace('-','')[::-1]
+
+        #loop through characters and append to list. Slower than solution below
+        #result = []
+        #for i in range(0, len(no_dash), k):
+        #    result.append(no_dash[i : i + k] )
+
+        #list comprehension, same solution as loop but faster
+        result = [no_dash[i:i+k] for i in range(0, len(no_dash), k)]
+        
+        #add dash and write to string
+        final = '-'.join(result)
+
+        return(final[::-1])
+
+
