@@ -1,0 +1,16 @@
+class Solution(object):
+    def findLHS(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        ans = 0
+        freq_map = {}
+        for num in nums:
+            freq_map[num] = freq_map.get(num,0)+1
+        
+        for num in nums:
+            if num+1 in freq_map:
+                ans = max(freq_map[num]+freq_map[num+1],ans)
+
+        return ans
