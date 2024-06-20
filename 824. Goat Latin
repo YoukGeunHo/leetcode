@@ -1,0 +1,23 @@
+class Solution:
+    def toGoatLatin(self, sentence: str) -> str:
+        l = sentence.split()
+        v = set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+        str1 = ''
+        r = ''
+        at = ''
+        st = ''
+        for intr in range(len(l)):
+            r = ''
+            at = 'a' * (intr + 1)
+            st = l[intr]
+            if st[0] in v:
+                r = st + 'ma'
+            else:
+                if len(st) > 1:
+                    for m in range(1, len(st)):
+                        r = r + st[m]
+                r = r + st[0]
+                r = r + 'ma'
+            r = r + at
+            str1 = str1 + ' ' + r
+        return str1[1:]
