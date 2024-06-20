@@ -1,0 +1,9 @@
+class Solution:
+    def validMountainArray(self, arr: List[int]) -> bool:
+        return [
+            k
+            for k, v in groupby(
+                (a2 - a1 for a1, a2 in pairwise(arr)),
+                lambda x: "p" * (x > 0) + "n" * (x < 0),
+            )
+        ] == ["p", "n"]
