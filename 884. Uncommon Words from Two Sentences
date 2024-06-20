@@ -1,0 +1,15 @@
+class Solution(object):
+    def appendUnCommon(self, l, mul, uc) :
+        for s in l :
+            if l.count(s) > 1 :
+                continue
+            if s in mul :
+                continue
+            uc.append(s)
+    def uncommonFromSentences(self, s1, s2):
+        ls1, ls2 = s1.split(" "), s2.split(" ")
+        mul = list(set(ls1) & set(ls2))
+        uc = []
+        self.appendUnCommon(ls1, mul, uc)
+        self.appendUnCommon(ls2, mul, uc)
+        return uc 
