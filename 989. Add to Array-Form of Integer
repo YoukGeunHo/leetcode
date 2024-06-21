@@ -1,0 +1,45 @@
+class Solution:
+    def addToArrayForm(self, num: List[int], k: int) -> List[int]:
+        # Convert the second number 'k' into an array of its digits.
+        kArray = []
+        while k:
+            remainder = k % 10
+            kArray.append(remainder)
+            k = k // 10
+        kArray = kArray[::-1]  # Reverse the array to get the correct order of digits.
+
+        carry = 0  # Initialize a variable to keep track of the carry during addition.
+
+        # Initialize pointers to the last elements of 'num' and 'kArray'.
+        numP, kP = len(num) - 1, len(kArray) - 1
+
+        result = []  # Initialize an array to store the result of the addition.
+
+        # Perform addition while both 'num' and 'kArray' have digits left.
+        while numP >= 0 and kP >= 0:
+            value = (num[numP] + kArray[kP] + carry) % 10  # Calculate the sum of digits.
+            carry = (num[numP] + kArray[kP] + carry) // 10  # Update the carry for the next addition.
+            numP -= 1 
+            kP -= 1  
+            result.append(value)  
+
+        # If there are still digits left in 'num', perform addition with the remaining digits.
+        while numP >= 0:
+            value = (num[numP] + carry) % 10
+            carry = (num[numP] + carry) // 10
+            result.append(value)
+            numP -= 1
+
+        # If there are still digits left in 'kArray', perform addition with the remaining digits.
+        while kP >= 0:
+            value = (kArray[kP] + carry) % 10
+            carry = (kArray[kP] + carry) // 10
+            result.append(value)
+            kP -= 1
+
+        # If there is a carry left after all additions, add it to the result.
+        if carry != 0:
+            result.append(carry)
+
+        # Reverse the result array to get the correct order of digits and return it.
+        return result[::-1]
